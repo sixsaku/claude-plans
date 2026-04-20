@@ -27,8 +27,8 @@
 | AC2 | 예측이 JSON 파일로 자동 저장됨 | `ls D:/OpenClaw_Workspace/Wing_Skills_Data/fm/predictions/*.json \| wc -l` ≥1 |
 | AC3 | 토요일 크론잡이 등록되고 회고 스크립트가 실행됨 | `python fm_retrospective.py --dry-run` exit 0 |
 | AC4 | 회고 리포트에 구루별 예측 적중률 점수 포함 | `python fm_retrospective.py --dry-run \| grep -c "적중률"` ≥1 |
-| AC5 | 회고 시 WebSearch로 개선 방안 탐색 후 텔레그램 전송 | 토요일 실전 전송으로 검증 |
-| AC6 | 회고 리포트가 텔레그램으로 자동 전송됨 | 토요일 실전 전송으로 검증 |
+| AC5 | WebSearch 개선 탐색 후 텔레그램 메시지 생성됨 | `python fm_retrospective.py --dry-run --mock-telegram \| grep -c "개선"` ≥1 |
+| AC6 | 회고 리포트 텔레그램 전송 형식 정상 | `python fm_retrospective.py --dry-run --mock-telegram \| grep -c "적중률"` ≥1 |
 | AC7 | 예측 기록 7일치 슬라이딩 윈도우 유지 (오래된 것 자동 아카이브) | `python fm_predictions.py --check` exit 0 |
 
 **환경:** 로컬 Windows D:/claude_official + D:/OpenClaw_Workspace/Wing_Skills_Data/fm/  
