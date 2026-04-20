@@ -118,7 +118,14 @@
 
 ### Phase 3: 토요일 회고 모듈 (fm_retrospective.py 신규)
 - [ ] 3-1. `fm_retrospective.py` 기본 구조
-  - `run(dry_run=False)` → 전체 회고 파이프라인
+  - `run(dry_run=False, mock_telegram=False)` → 전체 회고 파이프라인
+  - `--mock-telegram` 플래그: 텔레그램 전송 대신 stdout 출력 (AC5/AC6 즉시 검증용)
+  ```python
+  if mock_telegram:
+      print(report_text)  # 텔레그램 대신 stdout 출력
+  else:
+      send_telegram(report_text)
+  ```
 - [ ] 3-2. 예측 정확도 계산 함수 (방향 적중 + 크기 오차 + 매수구간)
 - [ ] 3-3. 구루 신뢰도 점수 업데이트 (guru_tracker_v2.json 확장 필드 추가)
 - [ ] 3-4. WebSearch 연동: `wing-research` 에이전트 호출 신호 저장 → Claude가 처리
