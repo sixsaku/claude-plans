@@ -24,10 +24,13 @@
 **성공 기준 (AC — 모두 충족 필요):**
 - [ ] AC1: `wing-plan` 또는 `wing-upa` 실행 시 prometheus 10문 인터뷰가 자동 발동됨
 - [ ] AC2: 인터뷰 완료 후 커스텀 계획 MD가 자동 생성되고 GitHub에 push됨
-- [ ] AC3: 계획 MD에 `/ultraplan` 승인자 관점 분석 요청 섹션이 포함됨
+- [ ] AC3: 계획 MD에 `## [APPROVER_DIRECTIVE]` 섹션이 포함됨
+  - 검증: `grep -l "APPROVER_DIRECTIVE" .claude/knowledge/plans/active/*.md`
 - [ ] AC4: CLI에서 `plan_to_local_mode.py` 실행 시 `/ultraplan` 브릿지 안내가 출력됨
+  - 검증: `python scripts/plan_to_local_mode.py <plan_path> | grep -c "ultraplan"` (≥1 이면 PASS)
 - [ ] AC5: 텔레그램으로 GitHub URL + `/ultraplan` 사용법 안내 전송됨
-- [ ] AC6: `/ultraplan` 웹 UI에서 승인자 관점 분석 결과가 표시됨 (수동 확인)
+- [ ] AC6: `/ultraplan` 웹 UI에서 승인자 관점 분석 결과 확인 가능
+  - 검증: `ls .claude/knowledge/plans/ultraplan_results/*.md 2>/dev/null | wc -l` (≥1 이면 PASS)
 - [ ] AC7: 텔레그램 인터뷰 중 다른 메시지가 오면 `interview_state.json` 타임아웃(5분) 처리됨
 - [ ] AC8: `!interview-cancel` 명령으로 인터뷰 중단 및 상태 초기화됨
 
@@ -176,7 +179,7 @@ Phase 1-1 (승인자 프롬프트 템플릿 설계)
 
 ---
 
-## /ultraplan 승인자 관점 분석 요청 (이 섹션이 핵심)
+## [APPROVER_DIRECTIVE] — ultraplan 승인자 관점 분석 요청
 
 > **이 계획을 /ultraplan에게 제출할 때 아래 지시를 포함할 것:**
 
