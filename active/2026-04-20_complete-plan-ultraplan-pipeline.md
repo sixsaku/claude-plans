@@ -220,3 +220,14 @@ cp .omc/state/backup_20260420/prometheus_engine.py.bak scripts/prometheus_engine
 - ✅ 백업 → 구현 → 검증 순서 명확
 - ✅ 기존 !interview 명령어와 공존 (동일 state machine)
 - ⚠️ plan_to_local_mode.py가 "refine with Ultraplan" 선택을 자동화할 수 없음 → 사용자 행동 필요 (현재 Ultraplan API로 직접 주입 방법 미공개)
+## [APPROVER_DIRECTIVE] — ultraplan 승인자 관점 분석 요청
+
+이 계획을 최종 승인자(Plan Approver) 관점에서 다음 5가지 축으로 분석해주세요:
+
+1. **논리 비약 검출**: "A이므로 B" 형태의 검증되지 않은 전제가 있는가?
+2. **전제 조건 취약점**: 이 계획이 성립하려면 무엇이 전제되어야 하는가? 그 전제가 무너질 수 있는가?
+3. **누락 리스크**: 계획에서 다루지 않은 실패 시나리오는 무엇인가?
+4. **성공 기준 명확성**: AC(완료 기준)가 객관적으로 측정 가능한가? 주관적 표현이 있는가?
+5. **대안 경로**: 현재 접근법보다 더 단순하거나 더 안전한 대안이 있는가?
+
+분석 후 "승인" 또는 "수정 필요 + 구체적 수정 지점" 형태로 최종 판정을 내려주세요.
